@@ -27,7 +27,7 @@ docker exec -it roamingapi-ollama-1 /bin/sh
 inside the llama container
 
 ```sh
-ollama pull tinyllama
+ollama pull mistral
 ```
 
 ## API
