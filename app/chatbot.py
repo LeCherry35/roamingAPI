@@ -39,7 +39,7 @@ class ChatBot:
 
         # Отправка запроса в Ollama (LLaMA или Mistral)
         try:
-            response = client.chat(model="tinyllama", messages=[{"role": "user", "content": prompt}])
+            response = client.chat(model="mistral", messages=[{"role": "user", "content": prompt}])
             answer = response["message"]["content"]
         except Exception as e:
             answer = f"Помилка: {str(e)}"
