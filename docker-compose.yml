@@ -30,6 +30,22 @@ services:
       - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
+    entrypoint: ["/bin/sh", "-c", "
+      ollama serve &
+      while ! ollama list > /dev/null 2>&1; do
+      echo 'Ожидание запуска Ollama...';
+      sleep 2;
+      done;
+      echo 'Ollama запущен!';
+      ollama pull mistral;
+      while ! ollama list | grep -q 'mistral'; do
+          echo 'Ожидание загрузки mistral...';
+          sleep 10;
+      done;
+      echo 'Модель mistral загружена.';
+      wait %1
+      "]
+
     
 
 volumes:

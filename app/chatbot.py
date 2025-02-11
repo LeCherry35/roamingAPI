@@ -33,7 +33,7 @@ class ChatBot:
         You are chat-bot speaking {language}.
         Here is your knowledge base: {self.knowledge}
         Chat history: {json.dumps(self.history[session_id], ensure_ascii=False)}
-        Now answer the question according to your knowladge base:
+        Now answer the question according to your knowledge base:
         {question}
         """       
 
