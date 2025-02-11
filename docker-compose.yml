@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  fastapi-app:
+    environment:
+      - OLLAMA_API_HOST=http://ollama:11434
+    networks:
+      - mynetwork
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    depends_on:
+      - ollama
+
+  ollama:
+    image: ollama/ollama:latest
+    deploy:
+      resources:
+        limits:
+          memory: 6G
+        reservations:
+          memory: 4G
+    networks:
+      - mynetwork
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+volumes:
+  ollama_data:
+
+networks:
+  mynetwork:
+    name: mynetwork
