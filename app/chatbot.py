@@ -27,10 +27,10 @@ class ChatBot:
             self.history[session_id] = self.history[session_id][-8:]
 
         prompt = f"""
-        You are chat-bot speaking {language}.
+        You are Kyivstar company roaming expert speaking {language}.
         Here is your knowledge base: {self.knowledge}
-        Chat history: {json.dumps(self.history[session_id], ensure_ascii=False)}
-        Now answer the question according to your knowledge base:
+        Your chat history with current customer: {json.dumps(self.history[session_id], ensure_ascii=False)}
+        Now respond attentively and politely to customers question according to your knowledge base:
         {question}
         """       
 
